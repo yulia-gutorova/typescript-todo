@@ -4,10 +4,10 @@ class TodoList{
     task: string;
     completed: number;
 
-    constructor(todoTask : string, todoCompleted: number){
+    constructor(task : string, completed: number){
         this.id = Math.random()
-        this.task = todoTask
-        this.completed = todoCompleted;
+        this.task = task
+        this.completed = completed;
     }
 }
 export default TodoList
