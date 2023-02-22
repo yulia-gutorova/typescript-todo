@@ -13,43 +13,44 @@ const AddTask = (props: IaddTask) => {
     const [task, setTask] = useState<string>('');
     const inputTaskElement = useRef<HTMLInputElement>(null)
 
-   
+
     //Take value from input field add invoke addNewTask function
-    const addTaskHandler = (event: React.MouseEvent<HTMLElement>) => 
-    {
-        
+    const addTaskHandler = (event: React.MouseEvent<HTMLElement>) => {
+
         let task = inputTaskElement.current!.value;
-         
+
         props.addNewTask(task);
         //Clear input
         //inputTaskElement.current!.value = '';
         setTask('');
     }
 
-    const inputChangeHandler = (event : React.ChangeEvent<HTMLInputElement>) => {
+    const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         setTask(event.currentTarget.value);
-      };
+    };
 
 
     return (
         <div className="addTask">
             <div>
-                <h1>Please, enter your tasks here:</h1>
+                <h1>Please, enter your task here:</h1>
             </div>
 
             <div>
-                <input className='input-country' 
-                    type='text' value={task} 
-                    onChange={inputChangeHandler} 
+                <input className='input-country'
+                    type='text' value={task}
+                    onChange={inputChangeHandler}
                     ref={inputTaskElement}></input>
                 <button onClick={addTaskHandler}>Add task</button>
             </div>
+            <div className='error-message-wrapper'>
+                <p
+                    className='error-message'
+                    style={{ display: props.display }}>
+                    {props.ptext}</p>
+            </div>
 
-            <p 
-                className='empty-task-message'
-                style={{ display: props.display }}>
-                {props.ptext}</p>
         </div>
     )
 }

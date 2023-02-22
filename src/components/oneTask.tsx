@@ -26,7 +26,7 @@ const OneTask = (props: IOneTask) => {
                 <td>
                     <button onClick={props.onDoneTaskHandler}>Done</button>
                     <button onClick={props.onHelpTaskHandler}>Help!</button>
-                    <button onClick={props.onDeleteTaskHandler}>Delete</button>
+                    <button onClick={props.onDeleteTaskHandler}><i className="fa-solid fa-trash-can"></i></button>
                 </td>
             </tr>
         </>

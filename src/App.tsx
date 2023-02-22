@@ -60,7 +60,7 @@ function App() {
         if (task.id === id) 
         {
           //Change text decotation to line-through 
-            if(task.completed===0)
+            if(task.completed===0 || task.completed === 2)
             {
               return { ...task, completed: 1 };
             }
@@ -107,7 +107,7 @@ const deleteTaskHandler = (id: number) => {
 
       <div>
         <p>Assignment TODO list with React and Typescript</p>
-        <p>Gutorova Yulia</p>
+        <p>Yulia Gutorova</p>
       </div>
 
       <AddTask addNewTask={addNewTask}

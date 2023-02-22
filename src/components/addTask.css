@@ -15,7 +15,11 @@ input {
     font-size: 20px;
 }
 
-.empty-task-message{
+.error-message-wpapper{
+    min-height: 30px;
+}
+
+.error-message{
     color: red;
     font-weight: 600px;
     margin-top: 20px;
