@@ -14,3 +14,9 @@ input {
     margin-right: 20px;
     font-size: 20px;
 }
+
+.empty-task-message{
+    color: red;
+    font-weight: 600px;
+    margin-top: 20px;
+}

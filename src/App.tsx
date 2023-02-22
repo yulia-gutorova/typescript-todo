@@ -7,19 +7,47 @@ import TodoList from './models/TodoListModel';
 
 function App() {
 
-  const [todoList, setTodoList] = useState<TodoList[]>([]);
 
-  const addNewTask =(task : string)=>{
+  const [todoList, setTodoList] = useState<TodoList[]>([]);
+  const [display, setDisplay] = useState<string>('none');
+  const [ptext, setPtext] = useState<string>('');
+  
+  const addNewTask =(task : string)=> {
+    
     //If task is not empty then add to list
+    //let pElement = document.querySelector('.empty-task-message');
+
+    //console.log(pElement);
+
+
     if(task.trim().length !=0 )
     {
-    
-      const newTask = new TodoList(task, 0);
-      setTodoList
-      (
-        //(arrayTodoList) => {return arrayTodoList.concat(newTask);}
-        (arrayTodoList) => {return [...arrayTodoList, newTask]}
-      );
+      setDisplay('none');
+
+      const filtered = todoList.filter((value) => value.task == task);
+      console.log('filrered')
+      console.log(filtered)
+      if (filtered.length==0)
+      {
+        const newTask = new TodoList(task, 0);
+
+        setTodoList
+        (
+          //(arrayTodoList) => {return arrayTodoList.concat(newTask);}
+          (arrayTodoList) => {return [...arrayTodoList, newTask]}
+        );
+      }
+      else{
+        console.log('duplicates!');
+        setDisplay('block');
+        setPtext('This task is already in your list!');
+      }
+    }
+
+
+    else{
+      setDisplay('block');
+      setPtext('You can not add an empty task!');
     }
   }
 
@@ -67,11 +95,10 @@ function App() {
   )
 }
 
-
 const deleteTaskHandler = (id: number) => {
   console.log('On delete task handler')
-   setTodoList((currentTodos) => {
-     return currentTodos.filter(task => task.id !== id)
+   setTodoList((arrayTodoList) => {
+     return arrayTodoList.filter(task => task.id !== id)
   })
 }
 
@@ -83,7 +110,9 @@ const deleteTaskHandler = (id: number) => {
         <p>Gutorova Yulia</p>
       </div>
 
-      <AddTask addNewTask={addNewTask}></AddTask>
+      <AddTask addNewTask={addNewTask}
+               display={display}
+               ptext = {ptext}></AddTask>
 
       <ListTasks list={todoList} 
                   allTodos={todoList.length}

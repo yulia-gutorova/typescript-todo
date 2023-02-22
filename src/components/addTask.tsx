@@ -3,9 +3,12 @@ import { useRef, useState } from "react"
 
 interface IaddTask {
     addNewTask: (task: string) => void;
+    display: string;
+    ptext: string;
 }
 
 const AddTask = (props: IaddTask) => {
+
 
     const [task, setTask] = useState<string>('');
     const inputTaskElement = useRef<HTMLInputElement>(null)
@@ -14,7 +17,7 @@ const AddTask = (props: IaddTask) => {
     //Take value from input field add invoke addNewTask function
     const addTaskHandler = (event: React.MouseEvent<HTMLElement>) => 
     {
-
+        
         let task = inputTaskElement.current!.value;
          
         props.addNewTask(task);
@@ -24,6 +27,7 @@ const AddTask = (props: IaddTask) => {
     }
 
     const inputChangeHandler = (event : React.ChangeEvent<HTMLInputElement>) => {
+
         setTask(event.currentTarget.value);
       };
 
@@ -41,6 +45,11 @@ const AddTask = (props: IaddTask) => {
                     ref={inputTaskElement}></input>
                 <button onClick={addTaskHandler}>Add task</button>
             </div>
+
+            <p 
+                className='empty-task-message'
+                style={{ display: props.display }}>
+                {props.ptext}</p>
         </div>
     )
 }
