@@ -13,15 +13,16 @@ interface IOneTask {
 const OneTask = (props: IOneTask) => {
 
     //Set properties to change colors
-    let color;
-    if (props.completed === 0) { color = "white" }
-    if (props.completed === 1) { color = "lightgreen" }
-    if (props.completed === 2) { color = "red" }
+    let decoration;
+    if (props.completed === 0) { decoration = 'none'}
+    if (props.completed === 1) { decoration = 'line-through 2px' }
+    if (props.completed === 2) { decoration ='wavy underline red 2px' }
 
     return (
         <>
             <tr>
-                <td style={{ backgroundColor: color }}><h3>{props.task}</h3></td>
+                <td style={{ textDecoration: decoration }}><h3>{props.task}</h3></td> 
+                
                 <td>
                     <button onClick={props.onDoneTaskHandler}>Done</button>
                     <button onClick={props.onHelpTaskHandler}>Help!</button>

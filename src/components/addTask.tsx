@@ -9,7 +9,9 @@ const AddTask = (props: IaddTask) => {
 
     const inputTaskElement = useRef<HTMLInputElement>(null)
 
-    const addTaskHandler = (event: React.MouseEvent<HTMLElement>) => {
+    //Take value from input field add invoke addNewTask function
+    const addTaskHandler = (event: React.MouseEvent<HTMLElement>) => 
+    {
         let task = inputTaskElement.current!.value;
         props.addNewTask(task);
         //Clear input
