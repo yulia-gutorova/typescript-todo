@@ -7,7 +7,6 @@ import TodoList from './models/TodoListModel';
 
 function App() {
 
-
   const [todoList, setTodoList] = useState<TodoList[]>([]);
 
   const addNewTask =(task : string)=>{
@@ -18,8 +17,9 @@ function App() {
       const newTask = new TodoList(task, 0);
       setTodoList
       (
-        (arrayTodoList) => {return arrayTodoList.concat(newTask);
-      });
+        //(arrayTodoList) => {return arrayTodoList.concat(newTask);}
+        (arrayTodoList) => {return [...arrayTodoList, newTask]}
+      );
     }
   }
 
@@ -31,7 +31,7 @@ function App() {
       {
         if (task.id === id) 
         {
-          //Change color to green 
+          //Change text decotation to line-through 
             if(task.completed===0)
             {
               return { ...task, completed: 1 };
@@ -55,6 +55,7 @@ function App() {
     todoList.map((task) => {
       if (task.id === id) 
       {
+        //Change text decotation to underline
         if(task.completed === 0 || task.completed === 1){return { ...task, completed: 2 };}
         else {return { ...task, completed: 0 };}   
       } 
