@@ -9,25 +9,19 @@ function App() {
 
 
   const [todoList, setTodoList] = useState<TodoList[]>([]);
-  const [display, setDisplay] = useState<string>('none');
+  const [display, setDisplay] = useState<boolean>(false);
   const [ptext, setPtext] = useState<string>('');
   
   const addNewTask =(task : string)=> {
     
     //If task is not empty then add to list
-    //let pElement = document.querySelector('.empty-task-message');
 
-    //console.log(pElement);
-
-
-    if(task.trim().length !=0 )
+    if(task.trim().length !== 0 )
     {
-      setDisplay('none');
+      setDisplay(false);
 
-      const filtered = todoList.filter((value) => value.task == task);
-      console.log('filrered')
-      console.log(filtered)
-      if (filtered.length==0)
+      const filtered = todoList.filter((value) => value.task === task);
+      if (filtered.length===0)
       {
         const newTask = new TodoList(task, 0);
 
@@ -38,15 +32,13 @@ function App() {
         );
       }
       else{
-        console.log('duplicates!');
-        setDisplay('block');
+        setDisplay(true);
         setPtext('This task is already in your list!');
       }
     }
 
-
     else{
-      setDisplay('block');
+      setDisplay(true);
       setPtext('You can not add an empty task!');
     }
   }

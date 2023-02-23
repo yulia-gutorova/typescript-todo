@@ -3,25 +3,22 @@ import { useRef, useState } from "react"
 
 interface IaddTask {
     addNewTask: (task: string) => void;
-    display: string;
+    display: boolean;
     ptext: string;
 }
 
 const AddTask = (props: IaddTask) => {
 
-
     const [task, setTask] = useState<string>('');
     const inputTaskElement = useRef<HTMLInputElement>(null)
-
 
     //Take value from input field add invoke addNewTask function
     const addTaskHandler = (event: React.MouseEvent<HTMLElement>) => {
 
-        let task = inputTaskElement.current!.value;
+        //let task = inputTaskElement.current!.value;
 
         props.addNewTask(task);
         //Clear input
-        //inputTaskElement.current!.value = '';
         setTask('');
     }
 
@@ -47,7 +44,8 @@ const AddTask = (props: IaddTask) => {
             <div className='error-message-wrapper'>
                 <p
                     className='error-message'
-                    style={{ display: props.display }}>
+                    // style={{ visibility: clicked ? "visible" : "hidden" }}
+                    style={{ visibility: props.display ? 'visible' : 'hidden' }}>
                     {props.ptext}</p>
             </div>
 
