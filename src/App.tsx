@@ -12,6 +12,9 @@ function App() {
   const [display, setDisplay] = useState<boolean>(false);
   const [ptext, setPtext] = useState<string>('');
   
+  //******************************************
+  //Function addNewTask to add a new task to list
+  //****************************************** 
   const addNewTask =(task : string)=> {
     
     //If task is not empty then add to list
@@ -24,26 +27,29 @@ function App() {
       if (filtered.length===0)
       {
         const newTask = new TodoList(task, 0);
-
         setTodoList
         (
-          //(arrayTodoList) => {return arrayTodoList.concat(newTask);}
           (arrayTodoList) => {return [...arrayTodoList, newTask]}
         );
       }
-      else{
+      else
+      {
+        //Show arror message with text when trying to add a duplicated task
         setDisplay(true);
         setPtext('This task is already in your list!');
       }
     }
-
-    else{
+    else
+    {
+      //Show arror message with text when trying to add an empty task
       setDisplay(true);
       setPtext('You can not add an empty task!');
     }
   }
 
-  //When Task is done
+  //******************************************
+  //Function doneTaskHandler to mark task as done
+  //****************************************** 
   const doneTaskHandler = (id: number) => {
     setTodoList
     (
@@ -68,32 +74,41 @@ function App() {
     )
   }
 
+  //******************************************
+  //Function helpTaskHadler to mart a task as a problem
+  //****************************************** 
   const helpTaskHandler = (id: number) => {
     console.log('On help task handler')
 
-  setTodoList(
-    todoList.map((task) => {
-      if (task.id === id) 
-      {
-        //Change text decotation to underline
-        if(task.completed === 0 || task.completed === 1){return { ...task, completed: 2 };}
-        else {return { ...task, completed: 0 };}   
-      } 
-      else 
-      {
-        return task;
-      }
+    setTodoList
+    (
+      todoList.map((task) => {
+        if (task.id === id) 
+        {
+          //Change text decotation to underline
+          if(task.completed === 0 || task.completed === 1){return { ...task, completed: 2 };}
+          else {return { ...task, completed: 0 };}   
+        } 
+        else 
+        {
+          return task;
+        }
+      })
+    )
+  }
+
+  //******************************************
+  //Function deleteTask to delete a task from the list
+  //****************************************** 
+  const deleteTaskHandler = (id: number) => {
+    setTodoList((arrayTodoList) => {
+      return arrayTodoList.filter(task => task.id !== id)
     })
-  )
-}
+  }
 
-const deleteTaskHandler = (id: number) => {
-  console.log('On delete task handler')
-   setTodoList((arrayTodoList) => {
-     return arrayTodoList.filter(task => task.id !== id)
-  })
-}
-
+  //**************************************************************************************
+  //Return component
+  //****************************************** 
   return (
     <div className="App">
 

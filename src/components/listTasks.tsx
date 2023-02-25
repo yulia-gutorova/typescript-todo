@@ -3,15 +3,18 @@ import './listTasks.css'
 import TodoList from '../models/TodoListModel';
 
 interface IListTasks {
-  list: TodoList[];
-  allTodos: number;
-  onDoneTaskHandler: (id: number) => void;
-  onHelpTaskHandler: (id: number) => void;
+  list:                TodoList[];
+  allTodos:            number;
+  onDoneTaskHandler:   (id: number) => void;
+  onHelpTaskHandler:   (id: number) => void;
   onDeleteTaskHandler: (id: number) => void;
 }
 
 const ListTasks = (props: IListTasks) => {
 
+  //**************************************************************************************
+  //Return component
+  //****************************************** 
   return (
     <div className='list-of-tasks' style={{ backgroundColor: props.allTodos !== 0 ? "rgb(219, 217, 217)" : "white" }}>
       {props.allTodos !== 0 && <h2> Your tasks:</h2>}
@@ -29,8 +32,7 @@ const ListTasks = (props: IListTasks) => {
             onDeleteTaskHandler={() => props.onDeleteTaskHandler(item.id)}
           />
         )
-        )
-        }
+        )}
 
       </table>
     </div>
