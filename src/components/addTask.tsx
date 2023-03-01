@@ -8,19 +8,23 @@ interface IaddTask {
     addNewTask: (task: string) => void;
 }
 
+//----------------------------------------------------------
 const AddTask = (props: IaddTask) => {
 
     const [task, setTask] = useState<string>('');
 
-    //Take value from input field add invoke addNewTask function
+    //******************************************
+    //Function addTaskHandler to invoke addNewTask function and clear input field
+    //****************************************** 
     const addTaskHandler = (event: React.MouseEvent<HTMLElement>) => {
-
-        //let task = inputTaskElement.current!.value;
         props.addNewTask(task);
         //Clear input
         setTask('');
     }
 
+    //******************************************
+    //Function inputChangeHandler to handle input
+    //****************************************** 
     const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTask(event.target.value);
     };
@@ -34,13 +38,16 @@ const AddTask = (props: IaddTask) => {
             <div>
                 <h1>Please, enter your task here:</h1>
             </div>
+
             <div>
                 <input className='input-country'
-                    type='text' value={task}
+                    type='text' 
+                    value={task} 
                     onChange={event => inputChangeHandler(event)}>                   
                 </input>
                 <button onClick={addTaskHandler}>Add task</button>
             </div>
+
             <div className='error-message-wrapper'>
                 <p
                     className='error-message'

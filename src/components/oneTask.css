@@ -13,3 +13,7 @@ button:hover {
     transition: background-color 1s;
     background-color: rgb(7, 67, 117);
 }
+
+li{
+    list-style-type: none;
+}

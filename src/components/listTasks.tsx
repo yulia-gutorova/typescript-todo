@@ -5,12 +5,22 @@ import TodoList from '../models/TodoListModel';
 interface IListTasks {
   list: TodoList[];
   allTodos: number;
-  // onDoneTaskHandler: (id: number) => void;
-  // onHelpTaskHandler: (id: number) => void;
   onDeleteTaskHandler: (id: number) => void;
 }
 
+//----------------------------------------------------------
 const ListTasks = (props: IListTasks) => {
+
+  //Create a variable to remove map from return
+  const listOfTasks = props.list.map((item) =>
+  (
+    <OneTask
+      key={item.id}
+      task={item.task}
+      onDeleteTaskHandler={() => props.onDeleteTaskHandler(item.id)}
+    />
+  )
+  )
 
   //**************************************************************************************
   //Return component
@@ -21,18 +31,7 @@ const ListTasks = (props: IListTasks) => {
       <hr />
       <table className='table'>
         <tbody>
-          {props.list.map((item) =>
-          (
-            <OneTask
-              key={item.id}
-              task={item.task}
-              // completed={item.completed}
-              // onDoneTaskHandler={() => props.onDoneTaskHandler(item.id)}
-              // onHelpTaskHandler={() => props.onHelpTaskHandler(item.id)}
-              onDeleteTaskHandler={() => props.onDeleteTaskHandler(item.id)}
-            />
-          )
-          )}
+          {listOfTasks}
         </tbody>
       </table>
     </div>

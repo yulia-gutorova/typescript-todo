@@ -18,7 +18,6 @@ function App() {
   const addNewTask =(task : string)=> {
     
     //If task is not empty then add to list
-
     if(task.trim().length !== 0 )
     {
       setDisplay(false);
@@ -34,69 +33,20 @@ function App() {
       }
       else
       {
-        //Show arror message with text when trying to add a duplicated task
+        //Show error message with text when trying to add a duplicated task
         setDisplay(true);
         setPtext('This task is already in your list!');
       }
     }
     else
     {
-      //Show arror message with text when trying to add an empty task
+      //Show error message with text when trying to add an empty task
       setDisplay(true);
       setPtext('You can not add an empty task!');
     }
   }
 
-  //******************************************
-  //Function doneTaskHandler to mark task as done
-  //****************************************** 
-  /* const doneTaskHandler = (id: number) => {
-    setTodoList
-    (
-      todoList.map((task) => 
-      {
-        if (task.id === id) 
-        {
-          //Change text decotation to line-through 
-            if(task.completed===0 || task.completed === 2)
-            {
-              return { ...task, completed: 1 };
-            }
-            else 
-            {return { ...task, completed: 0};
-          }         
-        }       
-        else 
-        {
-          return task;
-        }
-      })
-    )
-  } */
 
-  //******************************************
-  //Function helpTaskHadler to mart a task as a problem
-  //****************************************** 
-/*   const helpTaskHandler = (id: number) => {
-    console.log('On help task handler')
-
-    setTodoList
-    (
-      todoList.map((task) => {
-        if (task.id === id) 
-        {
-          //Change text decotation to underline
-          if(task.completed === 0 || task.completed === 1){return { ...task, completed: 2 };}
-          else {return { ...task, completed: 0 };}   
-        } 
-        else 
-        {
-          return task;
-        }
-      })
-    )
-  }
- */
   //******************************************
   //Function deleteTask to delete a task from the list
   //****************************************** 
@@ -122,10 +72,8 @@ function App() {
                ptext = {ptext}></AddTask>
 
       <ListTasks list={todoList} 
-                  allTodos={todoList.length}
-                  // onDoneTaskHandler={doneTaskHandler}
-                  // onHelpTaskHandler={helpTaskHandler}
-                  onDeleteTaskHandler={deleteTaskHandler}></ListTasks>
+                allTodos={todoList.length}
+                onDeleteTaskHandler={deleteTaskHandler}></ListTasks>
     </div>
   );
 }
