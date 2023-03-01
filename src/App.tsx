@@ -26,7 +26,7 @@ function App() {
       const filtered = todoList.filter((value) => value.task === task);
       if (filtered.length===0)
       {
-        const newTask = new TodoList(task, 0);
+        const newTask = new TodoList(task);
         setTodoList
         (
           (arrayTodoList) => {return [...arrayTodoList, newTask]}
@@ -50,7 +50,7 @@ function App() {
   //******************************************
   //Function doneTaskHandler to mark task as done
   //****************************************** 
-  const doneTaskHandler = (id: number) => {
+  /* const doneTaskHandler = (id: number) => {
     setTodoList
     (
       todoList.map((task) => 
@@ -72,12 +72,12 @@ function App() {
         }
       })
     )
-  }
+  } */
 
   //******************************************
   //Function helpTaskHadler to mart a task as a problem
   //****************************************** 
-  const helpTaskHandler = (id: number) => {
+/*   const helpTaskHandler = (id: number) => {
     console.log('On help task handler')
 
     setTodoList
@@ -96,7 +96,7 @@ function App() {
       })
     )
   }
-
+ */
   //******************************************
   //Function deleteTask to delete a task from the list
   //****************************************** 
@@ -123,8 +123,8 @@ function App() {
 
       <ListTasks list={todoList} 
                   allTodos={todoList.length}
-                  onDoneTaskHandler={doneTaskHandler}
-                  onHelpTaskHandler={helpTaskHandler}
+                  // onDoneTaskHandler={doneTaskHandler}
+                  // onHelpTaskHandler={helpTaskHandler}
                   onDeleteTaskHandler={deleteTaskHandler}></ListTasks>
     </div>
   );
