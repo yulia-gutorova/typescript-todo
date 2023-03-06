@@ -3,7 +3,7 @@ import '../App.css'
 import './oneTask.css'
 
 interface IOneTask {
-    task:                string;
+    task               :  string;
     onDeleteTaskHandler: (event: React.MouseEvent) => void;
 }
 

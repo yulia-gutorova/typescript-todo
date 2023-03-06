@@ -7,7 +7,6 @@ import TodoList from './models/TodoListModel';
 
 function App() {
 
-
   const [todoList, setTodoList] = useState<TodoList[]>([]);
   const [display, setDisplay] = useState<boolean>(false);
   const [ptext, setPtext] = useState<string>('');
@@ -46,7 +45,6 @@ function App() {
     }
   }
 
-
   //******************************************
   //Function deleteTask to delete a task from the list
   //****************************************** 
@@ -67,13 +65,15 @@ function App() {
         <p>Yulia Gutorova</p>
       </div>
 
-      <AddTask addNewTask={addNewTask}
-               display={display}
-               ptext = {ptext}></AddTask>
+      <AddTask 
+        addNewTask={addNewTask}
+        display={display}
+        ptext = {ptext}></AddTask>
 
-      <ListTasks list={todoList} 
-                allTodos={todoList.length}
-                onDeleteTaskHandler={deleteTaskHandler}></ListTasks>
+      <ListTasks 
+        list={todoList} 
+        allTodos={todoList.length}
+        onDeleteTaskHandler={deleteTaskHandler}></ListTasks>
     </div>
   );
 }

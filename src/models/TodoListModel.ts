@@ -1,7 +1,7 @@
 
 class TodoList{
-    id: number;
-    task: string;
+    id   : number;
+    task : string;
 
     constructor(task : string){
         this.id = Math.random()

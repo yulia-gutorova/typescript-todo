@@ -3,9 +3,9 @@ import {useState } from "react"
 
 interface IaddTask {
 
-    display:    boolean;
-    ptext:      string;
-    addNewTask: (task: string) => void;
+    display    : boolean;
+    ptext      : string;
+    addNewTask : (task: string) => void;
 }
 
 //----------------------------------------------------------

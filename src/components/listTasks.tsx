@@ -3,8 +3,8 @@ import './listTasks.css'
 import TodoList from '../models/TodoListModel';
 
 interface IListTasks {
-  list: TodoList[];
-  allTodos: number;
+  list               : TodoList[];
+  allTodos           : number;
   onDeleteTaskHandler: (id: number) => void;
 }
 
